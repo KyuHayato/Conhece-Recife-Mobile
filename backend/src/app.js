@@ -1,35 +1,25 @@
-const express=require('express');
-const app = express();
-const bodyParser=require("body-parser");
-var path = require('path');
+require("./database")();
 
-const connect=require('./database');
+const routeParceiros = require("./routes/parceiros");
+const routeLugares = require("./routes/lugar");
 
-const parceiros = require('./Routes/parceirosRoutes');
-const parceirosMongo=('./model/parceirosModel.js');
+const express = require("express");
+const expressApp = express();
+const bodyParser = require("body-parser");
 
-const lugares = require('./Routes/lugarRoutes');
-const lugaresMongo=('./model/lugarModel.js');
+expressApp.use(express.json());
+expressApp.use(bodyParser.urlencoded({ extended: true }));
 
+expressApp.use((req, res, next) => {
+  res.header("Access-control-Allow-Origin", "*");
+  res.header(
+    "Access-control-Allow-headers",
+    "origin, x-Requested-with, content-type, Accept"
+  );
+  next();
+});
 
-connect();
+expressApp.use("/parceiros", routeParceiros);
+expressApp.use("/lugares", routeLugares);
 
-
-app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
-
-
-
-app.use(function(req, res, next) {
-    res.header("Access-control-Allow-Origin", "*")
-    res.header(
-     "Access-control-Allow-headers",
-     "origin, x-Requested-with, content-type, Accept"
-      )
-      next()
-})
- 
-app.use('/parceiros',parceiros);
-app.use('/lugares',lugares);
- 
-module.exports = app
+module.exports = { expressApp };

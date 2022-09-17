@@ -1,7 +1,9 @@
-const app = require('./src/app')
-const port = 3000;
+const { expressApp } = require("./src/app");
 
-
-app.listen(port, () =>{
-    console.log(`listening on port ${port}!`)
-});
+try {
+  expressApp.listen(process.env.PORT, () => {
+    console.log(`Listening on PORT : ${process.env.PORT}!`);
+  });
+} catch (err) {
+  console.error(err);
+}
