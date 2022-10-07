@@ -110,14 +110,6 @@
                 </ion-text>
             </ion-card>
 
-
-
-
-
-
-
-
-
             <swiper :slidesPerView="2" :spaceBetween="1" :slidesPerGroup="1" :loop="true" :loopFillGroupWithBlank="true"
                 :pagination="{
                     clickable: true,
@@ -173,7 +165,6 @@
 
                     </ion-card>
                 </swiper-slide>
-
 
             </swiper>
 

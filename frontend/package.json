@@ -18,7 +18,10 @@
     "@ionic/vue": "^6.1.7",
     "@ionic/vue-router": "^6.1.7",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.2",
     "core-js": "^3.6.5",
+    "jquery": "^3.6.1",
+    "popper.js": "^1.16.1",
     "swiper": "^8.1.6",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12"

@@ -1,10 +1,13 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      <ion-grid class="center">
+      <ion-grid class="center" style="margin-top: 3rem">
         <ion-row>
           <ion-col>
-            <ion-label position="stacked" class="font-style"
+            <ion-label
+              position="stacked"
+              class="font-style"
+              
               >Nome completo</ion-label
             >
             <ion-input class="input-style"></ion-input>
@@ -40,7 +43,6 @@
           <ion-col class="center">
             <ion-button size="small" class="button-style"> Enviar </ion-button>
           </ion-col>
-          
         </ion-row>
       </ion-grid>
     </ion-content>
@@ -106,7 +108,7 @@ ion-button {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-  color: #ffffff;
+  color: black;
 }
 .button-style {
   width: 81px;
@@ -117,6 +119,7 @@ ion-button {
   --padding-top: 8px;
   gap: 10px;
   --border-radius: 16px;
+  color: black;
 }
 #container {
   text-align: center;

@@ -1,16 +1,14 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
-const baseURL = "http://localhost:3000";
-const APIService = {
-  getPlace() {
-    return axios.get(`${baseURL}/lugares`);
-  },
-  getPartner() {
-    return axios.get(`${baseURL}/parceiros`);
-  },
-  //    postLogin(email, senha){
-  //      return axios.post(`${baseURL}/auth/login`,{email,senha })
-  //}
-};
+// const httpsAgent = new https.Agent({
+//   rejectUnauthorized: false, // (NOTE: this will disable client verification)
+//   cert: fs.readFileSync("./usercert.pem"),
+//   key: fs.readFileSync("./key.pem"),
+//   passphrase: "YYY",
+// });
 
-export default APIService;
+const api: AxiosInstance = axios.create({
+  baseURL: "https://172.20.240.1:3000",
+});
+
+export default api;

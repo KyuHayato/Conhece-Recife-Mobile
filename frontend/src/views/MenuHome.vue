@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <ion-content>
       <div id="container">
         <div>
           <ion-img
@@ -13,55 +13,31 @@
               margin: 0px auto;
             "
           ></ion-img>
-          <div>
-            <ion-row>
-              <ion-col size="12">
-                <ion-button
-                  size="large"
-                  href="/menu/places/"
-                  class="button-style"
-                >
-                  Lugares
-                </ion-button>
-              </ion-col>
-              <ion-col size="12">
-                <ion-button
-                  size="large"
-                  href="/menu/streets"
-                  class="button-style"
-                >
-                  Ruas, etc.
-                </ion-button>
-              </ion-col>
-              <ion-col size="12">
-                <ion-button
-                  size="large"
-                  href="/menu/contacts"
-                  class="button-style"
-                >
+        </div>
+        <div>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <a href="/menu/places/">
+                <button :style="buttonVars" size="large" class="button-style">
+                  Conheça Lugares
+                </button>
+              </a>
+            </ion-col>
+            <ion-col size="10">
+              <a href="/menu/whopage/">
+                <button :style="buttonVars" size="large" class="button-style">
+                  Quem Somos
+                </button>
+              </a>
+            </ion-col>
+            <ion-col size="10">
+              <a href="/menu/contacts/">
+                <button size="large" :style="buttonVars" class="button-style">
                   Contato
-                </ion-button>
-              </ion-col>
-              <ion-col size="12">
-                <ion-button
-                  size="large"
-                  href="/menu/partners"
-                  class="button-style"
-                >
-                  Parceiros
-                </ion-button>
-              </ion-col>
-              <ion-col size="12">
-                <ion-button
-                  size="large"
-                  href="/menu/whopage"
-                  class="button-style"
-                >
-                  Quem somos
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </div>
+                </button>
+              </a>
+            </ion-col>
+          </ion-row>
         </div>
       </div>
     </ion-content>
@@ -72,17 +48,30 @@
 import { IonContent, IonButton, IonImg } from "@ionic/vue";
 import { defineComponent } from "vue";
 
+let pixe = "red";
+
 export default defineComponent({
   name: "MenuPage",
   components: {
     IonContent,
-    IonButton,
     IonImg,
   },
   data: function () {
     return {};
   },
   methods: {},
+  computed: {
+    buttonVars() {
+      return {
+        "background-size": "auto",
+        "background-clip": "border-box",
+        color: "black",
+        "font-size": "20px",
+        "font-weight": "bold",
+        backgroundColor: "#e78500",
+      };
+    },
+  },
 });
 </script>
 
@@ -91,24 +80,19 @@ ion-content {
   --background: #2f80ed;
 }
 
-ion-button {
-  --background: #e78500;
+a:hover {
+  cursor: pointer;
 }
 .button-style {
   width: 329.51px;
   height: 78px;
   border-radius: 15px;
-  border: 2px solid #e78500;
-  box-shadow: 0px 4px 4px 0px #00000040;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+
 #container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
 }
 
 #container strong {

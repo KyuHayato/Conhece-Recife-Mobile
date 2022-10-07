@@ -2,13 +2,14 @@
   <ion-header>
     <ion-toolbar class="toolbar">
       <ion-menu-button slot="start"></ion-menu-button>
-      <ion-title class="textToolbar"> Locais mais procurados </ion-title>
+      <ion-title class="textToolbar"> CONHECE RECIFE </ion-title>
     </ion-toolbar>
   </ion-header>
 
+  {{ allPlaces }}
   <ion-content>
     <swiper
-      :slidesPerView="2"
+      :slidesPerView="1"
       :spaceBetween="0"
       :slidesPerGroup="2"
       :loop="true"
@@ -27,7 +28,6 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -37,7 +37,6 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -47,7 +46,6 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -57,7 +55,6 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -67,7 +64,6 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
       <swiper-slide>
@@ -77,154 +73,123 @@
             src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
           >
           </ion-img>
-          <ion-card-subtitle class="cardBot">RECIFE ANTIGO</ion-card-subtitle>
         </ion-card>
       </swiper-slide>
     </swiper>
 
-    <ion-searchbar class="seach"> </ion-searchbar>
+    <ion-card class="ionCardMaster">
+      <ion-text style="background-color: #2f80ed">
+        <ion-card-title class="textTitleMain" style="">
+          MARCO ZERO
+        </ion-card-title>
+      </ion-text>
 
-    <ion-grid class="grid">
-      <ion-row class="linha">
-        <ion-col style="background-color: #2f80ed" class="coluna" size="4">
-          <ion-card style="background-color: #2f80ed">
-            <ion-img
-              class="imgGrid"
-              src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
-            >
-            </ion-img>
-          </ion-card>
-        </ion-col>
-
-        <ion-col
-          size="8"
-          style="background-color: #2f80ed; padding-left: 0; margin-left: 0"
+      <ion-row>
+        <ion-card-title class="textSubtitleMain" style="margin-left: 1em">
+          Acessivel Para:</ion-card-title
         >
-          <ion-card style="background-color: #2f80ed">
-            <ion-card-title class="textTileGrid"
-              >PRAÇA DO MARCO ZERO</ion-card-title
-            >
-            <ion-card-subtitle class="textSubtitleGrid"
-              >Praça</ion-card-subtitle
-            >
-          </ion-card>
-        </ion-col>
+
+        <ion-img
+          class="imgGrid2"
+          src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
+        >
+        </ion-img>
+        <ion-img
+          class="imgGrid2"
+          src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
+        >
+        </ion-img>
+
+        <ion-img
+          class="imgGrid2"
+          src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
+        >
+        </ion-img>
       </ion-row>
+      <ion-card class="textSubtitleMain" style="background-color: #2f80ed">
+        <ion-text class="textSubtitleMain" style="background-color: #2f80ed"
+          >Marco Zero, é conhecido como local de fundação da cidade do Recife e
+          também como ponto inicial de contagem das distâncias calculadas a
+          partir da cidade.
+        </ion-text>
+      </ion-card>
 
-      <ion-row class="linha">
-        <ion-col style="background-color: #2f80ed" class="coluna" size="4">
-          <ion-card style="background-color: #2f80ed">
+      <swiper
+        :slidesPerView="2"
+        :spaceBetween="1"
+        :slidesPerGroup="1"
+        :loop="true"
+        :loopFillGroupWithBlank="true"
+        :pagination="{
+          clickable: true,
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+      >
+        <swiper-slide>
+          <ion-card class="cardSup3">
             <ion-img
-              class="imgGrid"
+              class="imgGrid3"
               src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
             >
             </ion-img>
           </ion-card>
-        </ion-col>
-
-        <ion-col
-          size="8"
-          style="background-color: #2f80ed; padding-left: 0; margin-left: 0"
-        >
-          <ion-card style="background-color: #2f80ed">
-            <ion-card-title class="textTileGrid"
-              >PRAÇA DO MARCO ZERO</ion-card-title
-            >
-            <ion-card-subtitle class="textSubtitleGrid"
-              >Praça</ion-card-subtitle
-            >
-          </ion-card>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="linha">
-        <ion-col style="background-color: #2f80ed" class="coluna" size="4">
-          <ion-card style="background-color: #2f80ed">
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="cardSup3">
             <ion-img
-              class="imgGrid"
+              class="imgGrid3"
               src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
             >
             </ion-img>
           </ion-card>
-        </ion-col>
-
-        <ion-col
-          size="8"
-          style="background-color: #2f80ed; padding-left: 0; margin-left: 0"
-        >
-          <ion-card style="background-color: #2f80ed">
-            <ion-card-title class="textTileGrid"
-              >PRAÇA DO MARCO ZERO</ion-card-title
-            >
-            <ion-card-subtitle class="textSubtitleGrid"
-              >Praça</ion-card-subtitle
-            >
-          </ion-card>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="linha">
-        <ion-col
-          class="linha4"
-          onclick="console.log('direcionar para tela desejada')"
-          style="background-color: #2f80ed"
-          size="4"
-        >
-          <ion-card style="background-color: #2f80ed">
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="cardSup3">
             <ion-img
-              class="imgGrid"
+              class="imgGrid3"
               src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
             >
             </ion-img>
           </ion-card>
-        </ion-col>
-
-        <ion-col
-          class="linha4"
-          onclick="console.log('direcionar para tela desejada')"
-          size="8"
-          style="background-color: #2f80ed; padding-left: 0; margin-left: 0"
-        >
-          <ion-card style="background-color: #2f80ed">
-            <ion-card-title class="textTileGrid"
-              >PRAÇA DO MARCO ZERO</ion-card-title
-            >
-            <ion-card-subtitle class="textSubtitleGrid"
-              >Praça</ion-card-subtitle
-            >
-          </ion-card>
-        </ion-col>
-
-        <ion-col style="background-color: #2f80ed" size="4">
-          <ion-card style="background-color: #2f80ed">
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="cardSup3">
             <ion-img
-              class="imgGrid"
+              class="imgGrid3"
               src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
             >
             </ion-img>
           </ion-card>
-        </ion-col>
-
-        <ion-col
-          size="8"
-          style="background-color: #2f80ed; padding-left: 0; margin-left: 0"
-        >
-          <ion-card style="background-color: #2f80ed">
-            <ion-card-title class="textTileGrid"
-              >PRAÇA DO MARCO ZERO</ion-card-title
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="cardSup3">
+            <ion-img
+              class="imgGrid3"
+              src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
             >
-            <ion-card-subtitle class="textSubtitleGrid"
-              >Praça</ion-card-subtitle
-            >
+            </ion-img>
           </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="cardSup3">
+            <ion-img
+              class="imgGrid3"
+              src="https://lh5.googleusercontent.com/p/AF1QipOHfj-37L7-wIIBAzGHLocH96ohUAC2AcVTDRJ1=w256-h240-p-k-no"
+            >
+            </ion-img>
+          </ion-card>
+        </swiper-slide>
+      </swiper>
+    </ion-card>
   </ion-content>
+
+  RUAS E ETC
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import {
   IonImg,
   IonContent,
@@ -233,23 +198,20 @@ import {
   IonMenuButton,
   IonTitle,
   IonCard,
-  IonSearchbar,
-  IonCardSubtitle,
 } from "@ionic/vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import { IonCol, IonGrid, IonRow } from "@ionic/vue";
+import api from "@/services/api.service";
 
 //import "./style.css";
 
 import { Pagination, Navigation } from "swiper";
-import APIService from "@/services/api.service";
+
 export default defineComponent({
-  name: "PlacesPage",
+  name: "DetailsPage",
   components: {
     IonImg,
     IonHeader,
@@ -258,34 +220,31 @@ export default defineComponent({
     IonContent,
     Swiper,
     SwiperSlide,
-    IonCol,
-    IonGrid,
-    IonRow,
     IonTitle,
     IonCard,
-    IonSearchbar,
-    IonCardSubtitle,
   },
   setup() {
+    const allPlaces = ref([]);
+
+    const getAllPlaces = async () => {
+      await api.get("lugares").then((response) => {
+        console.log(response)
+        allPlaces.value = response.data;
+      }).catch(erro => console.log(erro));
+    };
+
+    onMounted(getAllPlaces);
+
     return {
+      allPlaces,
       modules: [Pagination, Navigation],
     };
   },
 
   data: function () {
-    return {
-        places: undefined,
-    };
+    return {};
   },
-  methods: {
-     async getPlaces() {
-      const res = await APIService.getPlace();
-      this.places = res.data
-    },
-  },
-  mounted() {
-    this.getPlaces();
-  },
+  methods: {},
 });
 </script>
 
@@ -293,6 +252,12 @@ export default defineComponent({
 .ion-padding {
   background-color: #f8fafe;
   text-emphasis-color: #f8fafe;
+}
+
+.ionCardMaster {
+  margin-top: -0.5em;
+  --background: #2f80ed;
+  padding-top: 0em;
 }
 
 ion-content {
@@ -321,6 +286,31 @@ swiper-slide {
   padding-top: 30px;
 }
 
+.imgGrid2 {
+  height: 25px;
+  width: 22px;
+  left: 168px;
+  top: 453px;
+  border-radius: 100%;
+  margin-top: 0.8em;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.textTitleMain {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 120%;
+  text-align: left;
+  /* identical to box height, or 36px */
+  margin-left: 0.5em;
+  letter-spacing: 2px;
+
+  color: #ffffff;
+}
+
 .imgGrid {
   box-sizing: border-box;
   border: 3px solid #db870f;
@@ -337,13 +327,39 @@ swiper-slide {
   flex-grow: 0;
 }
 
+.imgGrid3 {
+  box-sizing: border-box;
+  border: 3px solid #db870f;
+  border-radius: 13px;
+  width: 141px;
+  height: 108px;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
 .imgCarrosel {
   box-sizing: border-box;
   border: 5px solid #db870f;
   border-radius: 5px;
 }
 
+.imgCarrosel3 {
+  box-sizing: border-box;
+  border: 2px solid #db870f;
+  border-radius: 2px;
+}
+
 .cardSup {
+  background-color: #2f80ed;
+}
+
+.cardSup3 {
   background-color: #2f80ed;
 }
 
@@ -394,27 +410,30 @@ swiper-slide {
   flex-grow: 0;
 }
 
-.textTileGrid {
-  width: 172px;
-  height: 27px;
-
-  /* Header/H2 */
-  text-align: start;
-
+.textTitleGrid {
+  font-family: "Open Sans";
   font-style: normal;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 150%;
-  padding-left: 0;
-  margin-left: 0;
-  margin-top: 8%;
-  /* identical to box height, or 27px */
-  letter-spacing: 0.15px;
+  font-weight: 800;
+  font-size: 14.6923px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.22806px;
+  text-align: left;
   color: #ffffff;
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+}
+
+.textSubtitleMain {
+  margin-top: 12px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14.6923px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  color: #ffffff;
+  line-height: 150%;
 }
 
 .textToolbar {
@@ -422,7 +441,7 @@ swiper-slide {
 }
 
 .textSubtitleGrid {
-  text-align: start;
+  text-align: justify;
   color: #ffffff;
   padding-left: 1;
   margin-left: 1;

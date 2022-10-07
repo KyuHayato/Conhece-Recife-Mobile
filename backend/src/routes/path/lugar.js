@@ -1,8 +1,8 @@
 path = {
+  getAccessibilidade: "/:acessibilidade",
   getAll: "/",
   byId: "/:id",
-  getAccessibilidade: "/lugares/:acessibilidade",
-  postLugares: "/enviar",
+  postLugares: "/adicionar",
 };
 
 module.exports = path;
