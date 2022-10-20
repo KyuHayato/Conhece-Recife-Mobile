@@ -4,10 +4,9 @@
       <div id="container">
         <div>
           <ion-img
-            src="../../assets/Conhece-recife.svg"
+            src="../../assets/conhece-recife-logo.png"
             style="
-              width: 135px;
-              height: 143px;
+              width: 180px;
               padding-bottom: 20px;
               display: block;
               margin: 0px auto;
@@ -16,25 +15,25 @@
         </div>
         <div>
           <ion-row class="ion-justify-content-center">
-            <ion-col size="10">
+            <ion-col size="10" style="margin-bottom:20px">
               <a href="/menu/places/">
-                <button :style="buttonVars" size="large" class="button-style">
-                  Conheça Lugares
-                </button>
+              <ion-img
+                src= "../../assets/lugares1.png">
+              </ion-img>
               </a>
             </ion-col>
-            <ion-col size="10">
+            <ion-col size="10" style="margin-bottom:20px">
               <a href="/menu/whopage/">
-                <button :style="buttonVars" size="large" class="button-style">
-                  Quem Somos
-                </button>
+                <ion-img
+                  src= "../../assets/quem-somos.png">
+                </ion-img>
               </a>
             </ion-col>
-            <ion-col size="10">
+            <ion-col size="10" style="margin-bottom:20px">
               <a href="/menu/contacts/">
-                <button size="large" :style="buttonVars" class="button-style">
-                  Contato
-                </button>
+                <ion-img
+                  src= "../../assets/contato.png">
+                </ion-img>
               </a>
             </ion-col>
           </ion-row>
@@ -45,8 +44,8 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonButton, IonImg } from "@ionic/vue";
-import { defineComponent } from "vue";
+import { IonContent, IonButton, IonImg,IonToolbar } from "@ionic/vue";
+import { defineComponent } from "vue"; 
 
 let pixe = "red";
 
@@ -54,7 +53,7 @@ export default defineComponent({
   name: "MenuPage",
   components: {
     IonContent,
-    IonImg,
+    IonImg
   },
   data: function () {
     return {};
@@ -77,7 +76,8 @@ export default defineComponent({
 
 <style scoped>
 ion-content {
-  --background: #2f80ed;
+  --background: #ffffff;
+;
 }
 
 a:hover {
@@ -92,7 +92,7 @@ a:hover {
 #container {
   display: flex;
   flex-direction: column;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 #container strong {

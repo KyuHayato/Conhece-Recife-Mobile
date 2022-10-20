@@ -32,7 +32,7 @@
 
           <ion-col>
             <ion-label position="stacked" class="font-style"
-              >Textarea</ion-label
+              >Descrição</ion-label
             >
             <ion-textarea
               class="input-style"

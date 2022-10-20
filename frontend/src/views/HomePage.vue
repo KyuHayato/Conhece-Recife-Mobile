@@ -1,21 +1,21 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      <div id="container" class="style-borders-externals">
-        <div class="style-internal">
-          <ion-img
-            src="../../assets/Conhece-recife.svg"
-            style="
-              width: 140px;
-              height: 151px;
-              padding-bottom: 20px;
-              display: block;
-              margin: 0px auto;
-            "
+      <ion-img class="conhece-header"
+            src="../../assets/header-conhece-recife.png"
           ></ion-img>
-          <ion-button href="/menu/"> Vem conhecer! </ion-button>
+      <div id="container">
+        <div class="">
+          <ion-img class="conhece-logo"
+            src="../../assets/conhece-recife-logo.png"
+            style=""
+          ></ion-img>
+          <ion-button href="/menu/"> VEM CONHECER! </ion-button>
         </div>
       </div>
+          <ion-img class="conhece-footer"
+            src="../../assets/footer-conhece-recife.png"
+          ></ion-img>
     </ion-content>
   </ion-page>
 </template>
@@ -40,21 +40,33 @@ export default defineComponent({
 
 <style scoped>
 ion-content {
-  --background: #2f80ed;
+  --background: #ffffff;
 }
 
 ion-button {
   --background: #e78500;
+    width: 50%;
+    height: 60px;
+    font-weight: bold;
+}
+.conhece-header {
+  width: 100%;
+}
+.conhece-footer{
+  margin-top: 26%;
+  width: 100%;
+  height: 100%;
 }
 .style-internal {
   background: white;
   padding-bottom: 2rem;
-  padding-top: 2rem;
 }
-.style-borders-externals {
-  border-bottom: 20px solid #e78500;
-  border-top: 20px solid #e78500;
-  border-radius: 1.5rem;
+
+.conhece-logo{
+  width: 50%;
+  padding-bottom: 20px;
+  display: block;
+  margin: 0px auto;  
 }
 
 #container {
