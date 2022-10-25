@@ -1,5 +1,8 @@
 <template >
   <ion-content>
+
+       <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+
        <ion-img src="../../assets/topo.png"></ion-img>
 
         <div class="margem">
@@ -61,12 +64,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 body{
     background-color: #fff;
-    }
+}
+
 .ion-padding {
     background-color: #f8fafe;
     text-emphasis-color: #f8fafe;
+}
+
+.botao-topo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 ion-content {

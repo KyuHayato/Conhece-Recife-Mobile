@@ -1,9 +1,14 @@
 <template>
+  
   <ion-header>
     <ion-toolbar>
+      
       <ion-title class="ion-padding" style="color: white">
         CONHECE RECIFE
       </ion-title>
+
+      <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+
     </ion-toolbar>
   </ion-header>
 
@@ -35,6 +40,7 @@
 </template>
 
 <script lang="ts">
+
 import { defineComponent } from "vue";
 import { IonContent, IonHeader, IonToolbar } from "@ionic/vue";
 import APIService from "@/services/api.service";
@@ -48,14 +54,26 @@ export default defineComponent({
   methods: {
   },
 });
+
 </script>
 
 <style scoped>
+
 ion-content {
   --background: #2f80ed;
 }
 
 ion-toolbar {
   --background: #2f80ed;
+  height: 70px;
+  text-align: center;
 }
+
+
+.botao-topo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
 </style>

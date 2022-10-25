@@ -1,7 +1,10 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      <ion-grid class="center" style="margin-top: 3rem">
+      
+      <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+
+      <ion-grid class="center" style="margin-top: 5rem">
         <ion-row>
           <ion-col>
             <ion-label
@@ -41,7 +44,7 @@
           </ion-col>
 
           <ion-col class="center">
-            <ion-button size="small" class="button-style"> Enviar </ion-button>
+            <ion-button size="small" class="button-style enviar"> Enviar </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -83,9 +86,16 @@ ion-content {
   --background: #2f80ed;
 }
 
-ion-button {
+.enviar {
   --background: #e78500;
 }
+
+.botao-topo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
 .center {
   display: flex;
   justify-content: center;
