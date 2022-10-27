@@ -1,6 +1,7 @@
 require("./database")();
 
 const routeLugares = require("./routes/lugar");
+const routeContact = require("./routes/contact");
 
 const express = require("express");
 const expressApp = express();
@@ -19,5 +20,6 @@ expressApp.use((req, res, next) => {
 });
 
 expressApp.use("/lugares", routeLugares);
+expressApp.use("/contact", routeContact);
 
 module.exports = { expressApp };
