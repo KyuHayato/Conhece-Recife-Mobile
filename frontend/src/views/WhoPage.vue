@@ -1,7 +1,7 @@
 <template >
   <ion-content>
 
-       <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+       <a href="/menu"><ion-button class="botao-topo"> <ion-img class="seta" src="../../assets/seta.png "></ion-img> </ion-button></a>
 
        <ion-img src="../../assets/topo.png"></ion-img>
 
@@ -75,15 +75,24 @@ body{
 }
 
 .botao-topo {
+    background: none;
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 16px;
+    margin-top: 5%;
+    height: 5%;
+    width: 70px;
 }
 
 ion-content {
     --background: #fff;
     font-size: 11pt;
     color : #000;
+}
+
+ion-button{
+--background: none;
+  --box-shadow: none;
 }
 
 ion-card {

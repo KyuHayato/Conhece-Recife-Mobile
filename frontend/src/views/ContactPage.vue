@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content :fullscreen="true">
       
-      <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+      <a href="/menu"><ion-button class="botao-topo"> <ion-img class="seta" src="../../assets/seta.png "></ion-img></ion-button></a>
 
       <ion-grid class="center" style="margin-top: 5rem">
         <ion-row>
@@ -83,19 +83,27 @@ export default defineComponent({
 </script>
 <style scoped>
 ion-content {
-  --background: #2f80ed;
+  --background: #ffffff;
 }
 
+ion-button {
+  --background: none;
+  --box-shadow: none;
+  
+}
 .enviar {
   --background: #e78500;
+   
 }
 
 .botao-topo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  background: none;
+  position: absolute;
+  top: 8px;
+  margin-top: 10%;
+  height: 5%;
+  width: 70px;           
 }
-
 .center {
   display: flex;
   justify-content: center;
@@ -104,12 +112,13 @@ ion-content {
   width: 50%;
 }
 .input-style {
-  border: 1px solid #ffffff;
+  border: 2px solid #4d4c4c;
   border-radius: 10px;
-  background: #2f80ed;
+  background: #ffffff;
   width: 309px;
   height: 40px;
   margin-bottom: 14px;
+
 }
 .font-style {
   font-family: Nunito;
@@ -118,7 +127,14 @@ ion-content {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-  color: black;
+  color: rgb(0, 0, 0);
+}
+
+.md{
+  color: #000000;
+  
+  
+
 }
 .button-style {
   width: 81px;
@@ -129,7 +145,8 @@ ion-content {
   --padding-top: 8px;
   gap: 10px;
   --border-radius: 16px;
-  color: black;
+  color: rgb(255, 255, 255);
+  
 }
 #container {
   text-align: center;

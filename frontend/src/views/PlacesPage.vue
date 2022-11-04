@@ -7,7 +7,7 @@
         CONHECE RECIFE
       </ion-title>
 
-      <a href="/menu"><ion-button class="botao-topo">Voltar</ion-button></a>
+      <a href="/menu"><ion-button class="botao-topo"> <ion-img class="seta" src="../../assets/seta.png "></ion-img> </ion-button></a>
 
     </ion-toolbar>
   </ion-header>
@@ -63,6 +63,11 @@ ion-content {
   --background: #2f80ed;
 }
 
+ion-button {
+  --background: none;
+    --box-shadow: none;
+  }
+  
 ion-toolbar {
   --background: #2f80ed;
   height: 70px;
