@@ -8,7 +8,7 @@ import axios, { AxiosInstance } from "axios";
 // });
 
 const api: AxiosInstance = axios.create({
-  baseURL: "https://172.20.240.1:3000",
+  baseURL: "https://localhost:3000",
 });
 
 export default api;

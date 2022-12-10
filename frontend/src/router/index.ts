@@ -27,6 +27,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/DetailsPage.vue"),
   },
   {
+    path: "/menu/in-map/:id",
+    component: () => import("@/views/ShowInMap.vue"),
+  },
+  {
     path: "/menu/showplaces/",
     component: () => import("@/views/ShowPlacesPage.vue"),
   },

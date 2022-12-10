@@ -20,6 +20,6 @@ expressApp.use((req, res, next) => {
 });
 
 expressApp.use("/lugares", routeLugares);
-expressApp.use("/contact", routeContact);
+expressApp.use("/contato", routeContact);
 
 module.exports = { expressApp };

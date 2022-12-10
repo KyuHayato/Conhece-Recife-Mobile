@@ -1,59 +1,90 @@
-const lugaresMongo = require("../models/lugar");
 const lugares = require("../models/lugar");
+const { v4: uuidv4 } = require("uuid");
+const lugarService = require("../service/lugar");
 
-const getAll = (req, res) => {
-  lugares.find(function (err, lugares) {
-    if (err) {
-      res.status(500).send({ message: err.message });
+const getAll = async (req, res) => {
+  let response = {};
+  if (Object.keys(req.query).length != 0) {
+    const { temAcessibilidade } = req.query;
+    const { categorias } = req.query;
+    try {
+      response = await lugarService.getAllWithQueries(
+        temAcessibilidade,
+        categorias
+      );
+      return res.status(200).json(response);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
-    res.status(200).send(lugares);
-  });
+  }
+
+  try {
+    response = await lugarService.getAll();
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
-const getById = (req, res) => {
+const getAllCategorias = async (req, res) => {
+  let response = {};
+  try {
+    response = await lugarService.getAllCategories();
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const getLugarById = async (req, res) => {
+  let response = {};
   const id = req.params.id;
-  lugaresMongo.find({ id }, function (err, lugares) {
-    if (err) {
-      res.status(500).send({ message: err.message });
-    } else {
-      res.status(200).send(lugares);
-    }
-  });
+
+  try {
+    response = await lugarService.getLugarById(id);
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
-const getByAcessibilidade = (req, res) => {
-  const acessibilidade = req.params.acessibilidade;
-  lugaresMongo.find(
-    { acessibilidade },
-    "nome descricao cidade rua estado complemento cep bairro numero  ",
-    function (err, lugares) {
-      if (err) {
-        res.status(500).send("Não temos o registro");
-      } else return res.status(200).send(lugares);
-    }
-  );
+/* POST */
+const postCategoria = async (req, res) => {
+  const payload = req.body;
+  payload.id = uuidv4();
+
+  try {
+    let response = await lugarService.postCategoria(payload);
+    res.status(201).json({ message: "Categoria incluida", response });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const postLugares = (req, res) => {
-  let newlugaresMongo = new lugaresMongo(req.body);
+const postLugares = async (req, res) => {
+  const payload = req.body;
+  payload.id = uuidv4();
 
-  newlugaresMongo.save(function (err) {
-    if (err) {
-      res.status(500).send({ message: err.message });
-    }
-    res.status(201).send("Incluído com Sucesso");
-  });
+  try {
+    let response = await lugarService.postLugar(payload);
+    res.status(201).json({ message: "Lugar incluido", response });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
+
+/* DELETE */
 
 const deleteLugares = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
+
   try {
-    lugaresMongo.find({ id }, function (err, lugares) {
-      if (lugaresMongo.length > 0) {
-        lugaresMongo.deleteMany({ id }, function (err) {
+    lugares.find({ id }, function (err, lugares) {
+      if (lugares.length > 0) {
+        lugares.deleteMany({ id }, function (err) {
           if (!err) {
             res.status(200).send({
-              message: "Lugares removido com sucesso",
+              message: "Local removido com sucesso",
               status: "SUCCESS",
             });
           }
@@ -61,19 +92,21 @@ const deleteLugares = (req, res) => {
       } else
         res
           .status(200)
-          .send({ message: "Não há lugar para ser removido", status: "EMPTY" });
+          .send({ message: "Não há local para ser removido", status: "EMPTY" });
     });
   } catch (err) {
     console.log(err);
     return res
       .status(424)
-      .send({ message: "Erro ao deletar o registro do lugar" });
+      .send({ message: "Erro ao deletar o registro do local" });
   }
 };
 
+/* PUT */
+
 const putLugares = (req, res) => {
   const id = req.params.id;
-  lugaresMongo.updateMany(
+  lugares.updateMany(
     { id },
     { $set: req.body },
     { upsert: true },
@@ -92,6 +125,7 @@ module.exports = {
   postLugares,
   deleteLugares,
   putLugares,
-  getByAcessibilidade,
-  getById,
+  getLugarById,
+  getAllCategorias,
+  postCategoria,
 };
