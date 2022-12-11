@@ -8,20 +8,27 @@
         ></ion-img></ion-button
     ></a>
   </ion-header>
-  
-  <ion-content>
-    <iframe
-      :src="place.imageSrc"
-      width="100%"
-      height="400"
-      style="border: 0; padding: 2rem"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    >
-    </iframe>
-  </ion-content>
 
-  RUAS E ETC
+  <ion-content>
+    <div style="border: 0; padding: 2rem">
+      <iframe
+        :src="place.imageSrc"
+        width="100%"
+        height="400"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+
+      <div class="box_fast-detail">
+        <img
+          class="box_fast-detail__img"
+          :src="place.imageUri[0]"
+          alt="imagem do local"
+        />
+      </div>
+    </div>
+  </ion-content>
 </template>
 
 <script lang="ts">
@@ -57,7 +64,7 @@ export default defineComponent({
       place: {
         longitude: null,
         latitude: null,
-        imageUri: null,
+        imageUri: "",
         imageSrc: "",
       },
       key: process.env.API_KEY,
@@ -72,7 +79,8 @@ export default defineComponent({
         .get(`http://localhost:3000/lugares/${this.$route.params.id}`)
         .then((result) => {
           this.place = result.data[0];
-          this.place.imageSrc = `https://www.google.com/maps/embed/v1/place?key=${process.env.API_KEY}&q=${this.place.longitude},${this.place.latitude}&zoom=15`;
+          console.log(this.place);
+          this.place.imageSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAyoxyRxHbWpaUVYNILliXtClPDGk_NViU&q=${this.place.longitude},${this.place.latitude}&zoom=15`;
         });
     },
   },
@@ -83,6 +91,20 @@ export default defineComponent({
 .ion-padding {
   background-color: #f8fafe;
   text-emphasis-color: #f8fafe;
+}
+
+.box_fast-detail {
+  margin-top: 1rem;
+  background-color: orange;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  height: 10rem;
+}
+
+.box_fast-detail__img {
+  width: 45%;
+  height: 100%;
 }
 
 .ionCardMaster {
