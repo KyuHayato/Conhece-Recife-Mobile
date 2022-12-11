@@ -13,7 +13,7 @@ const lugaresSchema = new mongoose.Schema({
   latitude: { type: Number, required: true },
   acessibilidade: { type: Boolean, required: true },
   categoria: { type: Array, required: true },
-  imageUri: { type: String, required: true },
+  imageUri: { type: Array, required: true },
 });
 
 const lugaresMongo = mongoose.model("lugares", lugaresSchema);
