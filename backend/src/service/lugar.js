@@ -97,6 +97,16 @@ async function postLugar(payload) {
   }
 }
 
+async function deleteOne(id) {
+  let response = undefined;
+  try {
+    response = await lugares.deleteOne({ id });
+    return response;
+  } catch (error) {
+    return response;
+  }
+}
+
 module.exports = {
   getAll,
   getAllCategories,
@@ -104,4 +114,5 @@ module.exports = {
   getAllWithQueries,
   postCategoria,
   postLugar,
+  deleteOne,
 };

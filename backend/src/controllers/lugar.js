@@ -75,31 +75,20 @@ const postLugares = async (req, res) => {
 
 /* DELETE */
 
-const deleteLugares = (req, res) => {
+const deleteLugares = async (req, res) => {
   const { id } = req.params;
+  let response = {};
 
   try {
-    lugares.find({ id }, function (err, lugares) {
-      if (lugares.length > 0) {
-        lugares.deleteMany({ id }, function (err) {
-          if (!err) {
-            res.status(200).send({
-              message: "Local removido com sucesso",
-              status: "SUCCESS",
-            });
-          }
-        });
-      } else
-        res
-          .status(200)
-          .send({ message: "Não há local para ser removido", status: "EMPTY" });
-    });
-  } catch (err) {
-    console.log(err);
+    response = await lugarService.getLugarById(id);
+    if (response) {
+      let wasDeleted = lugarService.deleteOne(id);
+      return res.status(200).send({ message: wasDeleted });
+    }
     return res
       .status(424)
-      .send({ message: "Erro ao deletar o registro do local" });
-  }
+      .send({ message: "Não existe registro para esse ID" });
+  } catch (err) {}
 };
 
 /* PUT */
