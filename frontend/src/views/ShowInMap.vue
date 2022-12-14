@@ -1,46 +1,37 @@
 <template>
   <ion-header class="header">
-    <a href="/menu"
-      ><ion-button class="background-none">
-        <ion-img
-          class="seta"
-          src="../../assets/seta.png "
-        ></ion-img></ion-button
-    ></a>
-    <h4>No mapa</h4>
+    <ion-img class="seta" src="../../assets/seta.png"></ion-img>
+    <ion-title class="textToolbar"> {{ place.nome }} </ion-title>
   </ion-header>
 
   <ion-content>
-    <div>
-      <iframe
-        :src="place.imageSrc"
-        width="100%"
-        height="400"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        style="border: 0; padding: 1rem"
-      >
-      </iframe>
+    <iframe
+      :src="place.imageSrc"
+      width="100%"
+      height="400"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      style="border: 0; padding: 1rem"
+    >
+    </iframe>
 
-      <div class="box_fast-detail">
-        <img
-          class="box_fast-detail__img"
-          :src="place.imageUri[0]"
-          alt="imagem do local"
-        />
-        <span class="box_fast-titule-categories">{{ place.categoria[0] }}</span>
-
-        <div class="box_fast-description">
-          {{ place?.descricao }}
-        </div>
-      </div>
+    <div class="box_fast-detail">
+      <img
+        class="box_fast-detail__img"
+        :src="place.imageUri[0]"
+        alt="imagem do local"
+      />
+      <span class="box_fast-titule-categories">{{ place.categoria[0] }}</span>
+      <ion-text class="">
+        {{ place?.descricao }}
+      </ion-text>
     </div>
   </ion-content>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IonImg, IonContent, IonHeader } from "@ionic/vue";
+import { IonContent, IonHeader } from "@ionic/vue";
 import { RouterView } from "vue-router";
 
 import "swiper/css";
@@ -56,7 +47,6 @@ export default defineComponent({
   $route: RouterView,
   name: "DetailsPage",
   components: {
-    IonImg,
     IonHeader,
     IonContent,
   },
@@ -75,6 +65,7 @@ export default defineComponent({
         imageSrc: "",
         descricao: "",
         categoria: "",
+        nome: "",
       },
     };
   },
@@ -95,9 +86,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.ion-padding {
-  background-color: #f8fafe;
-  text-emphasis-color: #f8fafe;
+.textToolbar {
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .box_fast-description {
@@ -113,10 +104,12 @@ export default defineComponent({
 }
 
 .box_fast-detail {
-  margin:0 1rem;
+  margin: 0 1rem;
 
   display: flex;
   position: relative;
+
+  color: white;
 
   background-color: orange;
   border-radius: 0.5rem;
@@ -130,8 +123,9 @@ export default defineComponent({
 .box_fast-titule-categories {
   position: absolute;
 
-  background-color: white;
-  border-radius: 0.5rem;
+  background-color: orange;
+  border-radius: 0.8rem;
+  border: 2px solid white;
 
   margin: 1rem 0 1rem 0.7rem;
   padding: 0rem 0.7rem;
@@ -150,20 +144,8 @@ export default defineComponent({
 }
 
 .header {
-  color: white;
-  letter-spacing: .1rem;
-  background-color: #2f80ed;
-
+  margin: 0.5rem 0 1rem 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  padding-left: 1rem;
 }
-
-.header h4 {
-  margin: 0;
-  margin-left: 2rem;
-
-  font-weight: 700;
-}
-
 </style>
