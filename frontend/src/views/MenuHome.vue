@@ -16,7 +16,7 @@
         <div>
           <ion-row class="ion-justify-content-center">
             <ion-col size="10" style="margin-bottom:20px">
-              <a href="/menu/places/">
+              <a href="/menu/search-places/">
               <ion-img
                 src= "../../assets/lugares1.png">
               </ion-img>

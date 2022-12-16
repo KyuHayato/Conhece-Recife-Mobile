@@ -18,51 +18,59 @@
     >
       <swiper-slide>
         <ion-card class="cardSup">
-          <ion-img class="imgCarrosel" :src="places[0]?.imageUri[2]"> </ion-img>
+          <ion-img class="imgCarrosel" :src="places[0]?.imageUri[0]"> </ion-img>
         </ion-card>
       </swiper-slide>
 
       <swiper-slide>
         <ion-card class="cardSup">
-          <ion-img class="imgCarrosel" :src="places[2]?.imageUri[1]"> </ion-img>
+          <ion-img class="imgCarrosel" :src="places[1]?.imageUri[2]"> </ion-img>
         </ion-card>
       </swiper-slide>
 
       <swiper-slide>
         <ion-card class="cardSup">
-          <ion-img class="imgCarrosel" :src="places[0]?.imageUri[1]"> </ion-img>
+          <ion-img class="imgCarrosel" :src="places[2]?.imageUri[0]"> </ion-img>
         </ion-card>
       </swiper-slide>
     </swiper>
 
     <ion-grid>
       <ion-row>
-        <ion-col
-          v-for="categoria in categoriasQuery"
-          :key="categoria.id"
-          style="color: black"
-          lines="none"
-          size="3"
-          class="itemCategoria"
-        >
-          <span>{{ categoria }}</span>
+        <ion-col>
+          <ion-item
+            v-for="categoria of categorias"
+            :key="categoria.id"
+            style="color: black;"
+            class="sem-fundo"
+            lines="none"
+          >
+            <label class="item4">
+              {{ categoria.categoria }}
+              <input
+                type="radio"
+                class="categoria"
+                :value="categoria.categoria"
+              />
+            </label>
+          </ion-item>
         </ion-col>
       </ion-row>
-
-      <ion-row class="margin-text">
-        <ion-item
-          v-for="place of places"
-          :key="place.id"
-          style="color: black"
-          class="sem-fundo item"
-          lines="none"
-        >
-          <div>
-            <img style="width: 8rem" :src="place.imageUri[1]" alt="" />
-          </div>
-        </ion-item>
-      </ion-row>
     </ion-grid>
+
+    <ion-footer class="ion-no-border">
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+            @click="chamaProximaTela()"
+            color="orangebutton textToolbar"
+            style=""
+            expand="block"
+            ><a :href="link"> BUSCAR</a>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
   </ion-content>
 </template>
 
@@ -74,31 +82,30 @@ import {
   IonFooter,
   IonRow,
   IonCol,
-  IonToggle,
   IonGrid,
   IonItem,
   IonButton,
   IonImg,
   IonCard,
-  IonLabel,
 } from "@ionic/vue";
 import api from "@/services/api.service";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import swiper, { Pagination, Navigation } from "swiper";
-import { RouterView } from "vue-router";
+import { Pagination, Navigation } from "swiper";
 
 export default defineComponent({
-  $route: RouterView,
   name: "PlacesPage",
   components: {
     IonContent,
     Swiper,
     SwiperSlide,
     IonHeader,
+    IonFooter,
     IonRow,
+    IonItem,
+    IonCol,
     IonGrid,
     IonButton,
     IonImg,
@@ -111,41 +118,49 @@ export default defineComponent({
     return {
       places: [],
       categorias: [],
-      categoriasQuery: [""],
       link: "",
     };
   },
   mounted() {
     this.getPlace();
     this.getCategorias();
-    this.getQueries();
   },
   methods: {
-    getPlace() {
-      if (Object.keys(this.$route.query).length != 0) {
-        api
-          .get(`http://localhost:3000/lugares?categorias=${this.$route.query}`)
-          .then((data) => {
-            this.places = data.data;
-          });
+    chamaProximaTela() {
+      let Collection = document.getElementsByClassName("categoria");
+
+      let queryString = "";
+
+      for (var i = 0; i < Collection.length; i++) {
+        let item: any = Collection[i];
+
+        if (item?.checked) {
+          queryString += item.value + "+";
+        }
       }
-      api.get(`http://localhost:3000/lugares`).then((data) => {
+
+      // for (var i = 0; i < CollectionAccess.length; i++) {
+      //   let item: any = Collection[i];
+
+      //   if (item?.checked) {
+      //     queryStringAccess += item.value + "+";
+      //   }
+      // }
+
+      // &temAcessibilidade=${queryStringAccess}
+
+      this.link = `http://localhost:8080/menu/places?categorias=${queryString}`;
+    },
+    getPlace() {
+      api.get(`http://localhost:3000/lugares/`).then((data) => {
+        console.log(data.data);
         this.places = data.data;
       });
     },
     getCategorias() {
-      api.get(`http://localhost:3000/lugares/`).then((data) => {
+      api.get(`http://localhost:3000/lugares/categoria/`).then((data) => {
         this.categorias = data.data;
       });
-    },
-    getQueries() {
-      console.log("entrou");
-      if (Object.keys(this.$route.query).length != 0) {
-        const { categorias } = this.$route.query;
-        if (categorias) {
-          this.categoriasQuery = categorias.toString().trim().split(" ");
-        }
-      }
     },
   },
 });
@@ -156,29 +171,13 @@ ion-content {
   --background: #ffffff;
 }
 
-.itemCategoria {
-  margin-right: 10px;
-  color: black;
-  background: orange;
-
-  text-align: center;
-  border:1px solid black;
-
-  border-radius: 20px;
-}
-
-.itemCategoria:nth-child(1) {
-  margin-left: 15px;
-}
-
 .cardSup {
   height: 7rem;
   width: 10rem;
   border: 3px solid orange;
 }
 
-.item {
-  margin-bottom: 1rem;
+.imgCarrosel {
 }
 
 ion-toggle {

@@ -4,13 +4,16 @@ const lugarService = require("../service/lugar");
 
 const getAll = async (req, res) => {
   let response = {};
+  console.log(req.query);
   if (Object.keys(req.query).length != 0) {
     const { temAcessibilidade } = req.query;
     const { categorias } = req.query;
+
+    const filterCategorias = categorias.trim().split(" ");
     try {
       response = await lugarService.getAllWithQueries(
         temAcessibilidade,
-        categorias
+        filterCategorias
       );
       return res.status(200).json(response);
     } catch (error) {

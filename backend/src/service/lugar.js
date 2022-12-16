@@ -22,15 +22,23 @@ async function getAllWithQueries(temAcessibilidade, categorias) {
         .then((data) => {
           response = data;
         });
+
+      return response;
     } catch (error) {
       throw new Error(error);
     }
   }
   if (categorias) {
     try {
-      await lugares.find({ categorias: categorias }).then((data) => {
-        response = data;
-      });
+      await lugares
+        .find({
+          $or: [{ categoria: { $in: categorias } }],
+        })
+        .then((data) => {
+          response = data;
+        });
+
+      return response;
     } catch (error) {
       throw new Error(error);
     }
@@ -40,6 +48,8 @@ async function getAllWithQueries(temAcessibilidade, categorias) {
     await lugares.find({ acessibilidade: temAcessibilidade }).then((data) => {
       response = data;
     });
+
+    return response;
   } catch (error) {
     throw new Error(error);
   }

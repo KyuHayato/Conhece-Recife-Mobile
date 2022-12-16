@@ -19,8 +19,12 @@ const routes: Array<RouteRecordRaw> = [
     component: MenuHome,
   },
   {
+    path: "/menu/search-places/",
+    component: () => import("@/views/SearchPlaces.vue"),
+  },
+  {
     path: "/menu/places/",
-    component: () => import("@/views/PlacesPage.vue"),
+    component: () => import("@/views/PlacesFiltered.vue"),
   },
   {
     path: "/menu/details/:id",
