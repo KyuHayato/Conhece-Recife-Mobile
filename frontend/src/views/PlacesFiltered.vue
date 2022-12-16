@@ -57,8 +57,19 @@
           class="sem-fundo item"
           lines="none"
         >
-          <div>
-            <img style="width: 8rem" :src="place.imageUri[1]" alt="" />
+          <div class="itemPlace">
+            <a :href="getLinkMap(place.id)">
+              <img style="width: 8rem" :src="place.imageUri[1]" alt="" />
+            </a>
+            <div class="itemPlaceText">
+              <a :href="getLinkDetail(place.id)">
+                <h6>{{ place.nome }}</h6>
+              </a>
+
+              <span v-for="categoria of place.categoria" :key="categoria.nome">
+                {{ categoria }}
+              </span>
+            </div>
           </div>
         </ion-item>
       </ion-row>
@@ -113,6 +124,12 @@ export default defineComponent({
       categorias: [],
       categoriasQuery: [""],
       link: "",
+      getLinkMap: (id: string) => {
+        return `http://localhost:8080/menu/in-map/${id}`;
+      },
+      getLinkDetail: (id: string) => {
+        return `http://localhost:8080/menu/detail/${id}`;
+      },
     };
   },
   mounted() {
@@ -124,11 +141,14 @@ export default defineComponent({
     getPlace() {
       if (Object.keys(this.$route.query).length != 0) {
         const { categorias } = this.$route.query;
+        console.log(categorias);
         api
           .get(`http://localhost:3000/lugares?categorias=${categorias}`)
           .then((data) => {
+            console.log(data.data);
             this.places = data.data;
           });
+        return;
       }
       api.get(`http://localhost:3000/lugares`).then((data) => {
         this.places = data.data;
@@ -140,7 +160,6 @@ export default defineComponent({
       });
     },
     getQueries() {
-      console.log("entrou");
       if (Object.keys(this.$route.query).length != 0) {
         const { categorias } = this.$route.query;
         if (categorias) {
@@ -157,18 +176,51 @@ ion-content {
   --background: #ffffff;
 }
 
+.itemPlace {
+  display: inline-flex;
+}
+
+.itemPlaceText {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: blue;
+}
+
+.itemPlace div,
+h1 {
+  font-size: 0.9rem;
+}
+
+.itemPlace img {
+  height: 7rem;
+  border: 2px solid orange;
+  border-radius: 10px;
+  margin-right: 1rem;
+}
+
 .itemCategoria {
   margin-right: 10px;
   color: black;
   background: orange;
 
   text-align: center;
-  border:1px solid black;
+  border: 1px solid black;
 
   border-radius: 20px;
 }
 
-.itemCategoria:nth-child(1) {
+.itemCategoria:nth-child(1),
+.itemCategoria:nth-child(4) {
   margin-left: 15px;
 }
 
@@ -182,17 +234,6 @@ ion-content {
   margin-bottom: 1rem;
 }
 
-ion-toggle {
-  height: 70%;
-  width: 80%;
-  --border-radius: 50px;
-
-  --handle-width: 35%;
-  --handle-height: 120%;
-  --handle-max-height: auto;
-  --handle-spacing: -5px;
-}
-
 .sem-fundo {
   --background: none;
   --box-shadow: none;
@@ -203,62 +244,8 @@ ion-toggle {
   left: 10px;
 }
 
-.textToolbar {
-  color: black;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-}
-
 .margin-text {
   margin-top: 5%;
   margin-bottom: 5%;
-}
-
-.icon_streettree1 {
-  --handle-background-checked: #ffffff
-    url("../../public/assets/icon/icon_streettree1.png") no-repeat center/
-    contain;
-  --handle-background: #ffffff
-    url("../../public/assets/icon/icon_streettree1.png") no-repeat center /
-    contain;
-}
-
-.icon_streettree2 {
-  --handle-background-checked: #ffffff
-    url("../../public/assets/icon/icon_streettree2.png") no-repeat center /
-    contain;
-  --handle-background: #ffffff
-    url("../../public/assets/icon/icon_streettree2.png") no-repeat center /
-    contain;
-}
-
-.icone_praca {
-  --handle-background-checked: #ffffff
-    url("../../public/assets/icon/icone_praca.png") no-repeat center / contain;
-  --handle-background: #ffffff url("../../public/assets/icon/icone_praca.png")
-    no-repeat center / contain;
-}
-
-.cine {
-  --handle-background-checked: #ffffff url("../../public/assets/icon/cine.png")
-    no-repeat center / contain;
-  --handle-background: #ffffff url("../../public/assets/icon/cine.png")
-    no-repeat center / contain;
-}
-
-.cadeirante {
-  --handle-background-checked: #ffffff
-    url("../../public/assets/icon/cadeirante.png") no-repeat center / contain;
-  --handle-background: #ffffff url("../../public/assets/icon/cadeirante.png")
-    no-repeat center / contain;
-}
-
-.braile {
-  --handle-background-checked: #ffffff
-    url("../../public/assets/icon/braile.png") no-repeat center / contain;
-  --handle-background: #ffffff url("../../public/assets/icon/braile.png")
-    no-repeat center / contain;
 }
 </style>

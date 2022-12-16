@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/PlacesFiltered.vue"),
   },
   {
-    path: "/menu/details/:id",
+    path: "/menu/detail/:id",
     component: () => import("@/views/DetailsPage.vue"),
   },
   {

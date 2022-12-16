@@ -41,7 +41,7 @@
           <ion-item
             v-for="categoria of categorias"
             :key="categoria.id"
-            style="color: black;"
+            style="color: black"
             class="sem-fundo"
             lines="none"
           >
@@ -207,6 +207,11 @@ ion-toggle {
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 .margin-text {

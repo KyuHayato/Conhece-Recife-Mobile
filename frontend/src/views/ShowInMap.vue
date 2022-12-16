@@ -1,6 +1,8 @@
 <template>
   <ion-header class="header">
-    <ion-img class="seta" src="../../assets/seta.png"></ion-img>
+    <a href="/menu/search-places/"
+      ><ion-img class="seta" src="../../assets/seta.png"></ion-img
+    ></a>
     <ion-title class="textToolbar"> {{ place.nome }} </ion-title>
   </ion-header>
 
@@ -91,6 +93,9 @@ export default defineComponent({
   font-weight: 700;
 }
 
+ion-content {
+  --background: #ffffff;
+}
 .box_fast-description {
   display: flex;
   justify-content: center;
