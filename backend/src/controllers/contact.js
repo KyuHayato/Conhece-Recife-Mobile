@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 
 const postContact = async (req, res) => {
   const dataUser = req.body;
-  console.log(dataUser);
 
   nodemailer
     .createTransport({

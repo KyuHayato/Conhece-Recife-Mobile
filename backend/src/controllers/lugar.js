@@ -5,6 +5,7 @@ const lugarService = require("../service/lugar");
 const getAll = async (req, res) => {
   let response = {};
   console.log(req.query);
+
   if (Object.keys(req.query).length != 0) {
     const { temAcessibilidade } = req.query;
     const { categorias } = req.query;

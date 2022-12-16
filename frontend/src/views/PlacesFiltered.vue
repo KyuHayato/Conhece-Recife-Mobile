@@ -123,8 +123,9 @@ export default defineComponent({
   methods: {
     getPlace() {
       if (Object.keys(this.$route.query).length != 0) {
+        const { categorias } = this.$route.query;
         api
-          .get(`http://localhost:3000/lugares?categorias=${this.$route.query}`)
+          .get(`http://localhost:3000/lugares?categorias=${categorias}`)
           .then((data) => {
             this.places = data.data;
           });
